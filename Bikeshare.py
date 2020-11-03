@@ -2,9 +2,10 @@ import time
 import pandas as pd
 import numpy as np
 
-CITY_DATA = { 'Chicago': 'chicago.csv',
-              'New York City': 'new_york_city.csv',
-              'Washington': 'washington.csv' }
+CITY_DATA = { 'chicago': 'chicago.csv',
+              'new york city': 'new_york_city.csv',
+              'washington': 'washington.csv' }
+
 
 
 def get_filters():
@@ -21,32 +22,39 @@ def get_filters():
 
 
     while True:
-      city = input("\nWhich city would you like to analize? New York City, Chicago or Washington?\n").lower()
-      if city not in ('New York City', 'Chicago', 'Washington'):
+      city = input("\nWhich city would you like to analize? New York City, Chicago or Washington.\n").lower()
+      if city not in ('new york city', 'chicago', 'washington'):
         print('It seems like there is a typo or something else.')
         continue
       else:
         break
+
+    print(f"\nYou have chosen {city.upper()} as your city.")
 
     # TO DO: get user input for month (all, january, february, ... , june)
 
     while True:
       month = input("\nWhich month would you like to analyze? January, February, March, April, May, June or type 'all' for all the months.\n").lower()
-      if month not in ('January', 'February', 'March', 'April', 'May', 'June', 'all'):
+      if month not in ('january', 'february', 'march', 'april', 'may', 'june', 'all'):
         print('It seems like there is a typo or something else.')
         continue
       else:
         break
+
+    print(f"\nYou have chosen {month.upper()} as your month.")
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
 
     while True:
       day = input("\nWhich day would you like to analyze? Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or type 'all' for all the days.\n").lower()
-      if day not in ('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'all'):
+      if day not in ('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'all'):
         print('It seems like there is a typo or something else.')
         continue
       else:
         break
+    print(f"\nYou have chosen {day.upper()} as your day.")
+    print(f"\nYou have chosen to view data for city: {city.upper()}, month: {month.upper()} and day: {day.upper()}.")
+
 
     print('-'*40)
     return city, month, day
@@ -77,7 +85,7 @@ def load_data(city, month, day):
     # filter by month if applicable
     if month != 'all':
    	 	# use the index of the months list to get the corresponding int
-        months = ['January', 'February', 'March', 'April', 'May', 'June']
+        months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
 
     	# filter by month to create the new dataframe
@@ -216,7 +224,7 @@ def user_stats(df):
 
 def display_data(df):
 
-    """Displayes statistics for some raw data"""
+    """Displays statistics for some raw data"""
     choice = input('Would you like to display some raw data: Yes or No?\n ').lower()
     print()
     if choice=='yes':
