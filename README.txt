@@ -28,7 +28,7 @@ Statistics Computed
 
      In this project, the written code is to compute a variety of descriptive statistics:
 #1 Popular times of travelÊ(i.e., occurs most often in the start time)
-Ê
+
 * most common month
 * most common day of week
 * most common hour of day
